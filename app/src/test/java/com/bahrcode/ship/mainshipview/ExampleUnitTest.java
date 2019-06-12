@@ -2,6 +2,8 @@ package com.bahrcode.ship.mainshipview;
 
 import org.junit.Test;
 
+import java.util.regex.Pattern;
+
 import static org.junit.Assert.*;
 
 /**
@@ -14,4 +16,14 @@ public class ExampleUnitTest {
     public void addition_isCorrect() {
         assertEquals(4, 2 + 2);
     }
+    @Test
+    public void check_usernameIsEmail_accurately_returns_bool() {
+        Login usernameTests = new Login();
+        assertEquals(true, usernameTests.usernameIsEmail("user@gmail.com"));
+        assertEquals(false, usernameTests.usernameIsEmail("notAnEmail"));
+        assertEquals(false, usernameTests.usernameIsEmail(""));
+        assertEquals(false, usernameTests.usernameIsEmail("blah@nana"));
+        assertEquals(false, usernameTests.userNameIsEmail(".+=))("));
+    }
+
 }
