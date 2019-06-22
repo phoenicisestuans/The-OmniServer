@@ -42,22 +42,24 @@ public class MainActivity extends AppCompatActivity {
                     // nice and peasy
                     final Network network = NetworkManager.singleton.getNetwork();
 
-                    //try {
-                        Disposable d = network
-                                .login(new LoginRequest(emailText.getText().toString(),passwordText.getText().toString()))
-                                .observeOn(mainThread())
-                                .subscribe(()->{
-                                    network.getShips().subscribe(shipList->{
+                    Disposable d = network
+                            .login(new LoginRequest(emailText.getText().toString(),passwordText.getText().toString()))
+                            .observeOn(mainThread())
+                            .subscribe(()->{
+                                network.getShips().subscribe(shipList->{
+
                                         for(ShipInfo ship:shipList)
                                             ship.display();
+                                        Toast.makeText(this, "Successful Login", Toast.LENGTH_SHORT).show();
+
+                                        }, throwable -> {
+
+                                        Toast.makeText(this, "Error on ship fetch", Toast.LENGTH_LONG).show();
+                                        throwable.printStackTrace();
                                     });
 
-                                    Toast.makeText(this, "Successful Login", Toast.LENGTH_SHORT).show();
-                                });
+                                }, Throwable::printStackTrace);
 
-                    //} catch (Exception e){
-                    //    Toast.makeText(this, "Invalid Login.", Toast.LENGTH_LONG).show();
-                    //}
                 }
         );
     }
