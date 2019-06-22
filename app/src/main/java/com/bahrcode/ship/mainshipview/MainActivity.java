@@ -46,19 +46,30 @@ public class MainActivity extends AppCompatActivity {
                             .login(new LoginRequest(emailText.getText().toString(),passwordText.getText().toString()))
                             .observeOn(mainThread())
                             .subscribe(()->{
-                                network.getShips().subscribe(shipList->{
+                                Disposable x = network.getShips().subscribe(shipList->{
 
+                                        // create our shiplist
                                         for(ShipInfo ship:shipList)
+                                            // log all our info
                                             ship.display();
+                                        // announce victory
                                         Toast.makeText(this, "Successful Login", Toast.LENGTH_SHORT).show();
 
+                                        //NOTE: the second lambda in a subscribe call is meant to
+                                        // handle errors and exceptions. we are passing a throwable
+                                        // in here to check if there was an issue creating our ships.
                                         }, throwable -> {
 
                                         Toast.makeText(this, "Error on ship fetch", Toast.LENGTH_LONG).show();
                                         throwable.printStackTrace();
                                     });
 
-                                }, Throwable::printStackTrace);
+                                // This second lambda gets thrown if we didn't login right.
+                                }, throwable -> {
+
+                                Toast.makeText(this, "Invalid user credentials", Toast.LENGTH_LONG).show();
+                                throwable.printStackTrace();
+                            });
 
                 }
         );
