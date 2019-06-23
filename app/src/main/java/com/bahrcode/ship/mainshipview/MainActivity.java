@@ -1,5 +1,6 @@
 package com.bahrcode.ship.mainshipview;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.Button;
@@ -30,8 +31,16 @@ public class MainActivity extends AppCompatActivity {
 
         Button loginButton = findViewById(R.id.loginButton);
 
-        // this is uncommented when we actually port everything
-        //final Intent intent = new Intent(this, shipScreenActivity.class);
+        Button debugLoginButton = findViewById(R.id.autoLogin);
+
+
+        debugLoginButton.setOnClickListener(
+                view -> {
+                    emailText.setText("shipstatus@bahrcode.com");
+                    passwordText.setText("BA435B36A4E0");
+                }
+        );
+
 
         loginButton.setOnClickListener(
                 view -> {
@@ -46,30 +55,17 @@ public class MainActivity extends AppCompatActivity {
                             .login(new LoginRequest(emailText.getText().toString(),passwordText.getText().toString()))
                             .observeOn(mainThread())
                             .subscribe(()->{
-                                Disposable x = network.getShips().subscribe(shipList->{
 
-                                        // create our shiplist
-                                        for(ShipInfo ship:shipList)
-                                            // log all our info
-                                            ship.display();
-                                        // announce victory
-                                        Toast.makeText(this, "Successful Login", Toast.LENGTH_SHORT).show();
-
-                                        //NOTE: the second lambda in a subscribe call is meant to
-                                        // handle errors and exceptions. we are passing a throwable
-                                        // in here to check if there was an issue creating our ships.
-                                        }, throwable -> {
-
-                                        Toast.makeText(this, "Error on ship fetch", Toast.LENGTH_LONG).show();
-                                        throwable.printStackTrace();
-                                    });
-
+                                // go to our main ship view page
+                                Intent intentToMainShipView = new Intent(view.getContext(), MainShipView.class);
+                                MainActivity.this.startActivity(intentToMainShipView);
                                 // This second lambda gets thrown if we didn't login right.
                                 }, throwable -> {
 
                                 Toast.makeText(this, "Invalid user credentials", Toast.LENGTH_LONG).show();
                                 throwable.printStackTrace();
                             });
+
 
                 }
         );

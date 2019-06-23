@@ -21,7 +21,7 @@ public class ShipInfo {
     private List<String> errorList;
 
     @SerializedName("IsAccessible")
-    private boolean isAccessible;
+    private Boolean isAccessible;
 
     @SerializedName("LastSync")
     private LocalDateTime lastSync;
@@ -30,13 +30,13 @@ public class ShipInfo {
     private String name;
 
     @SerializedName("PingRate")
-    private double pingRate;
+    private Double pingRate;
 
     @SerializedName("PingTime")
-    private double pingTime;
+    private Double pingTime;
 
     @SerializedName("XPSScore")
-    private double xpsScore;
+    private Double xpsScore;
 
 
     public ShipInfo(List<String> errorList, boolean isAccessible, String name, double pingRate, double pingTime, double xpsScore, LocalDateTime lastSync) {
@@ -59,18 +59,36 @@ public class ShipInfo {
         Log.v("pingTime", pingTime + "");
         Log.v("xpsScore", xpsScore + "");
 
-        //TODO: check if this works
-        //Log.v("lastSync", lastSync.atZone(ZoneId.of()).toString();
         Log.v("lastSync", lastSync.toString());
-        //Log.v("lastSync", lastSync.toLocalTime().toString());
-        //Log.v("lastSync", lastSync.format(DateTimeFormatter.ISO_OFFSET_DATE_TIME));
-        //DateTimeFormatter FORMATTER = DateTimeFormatter.RFC_1123_DATE_TIME;
-        //ZonedDateTime.now().format(FORMATTER);
-        //Log.v("timeNow", ZonedDateTime.now().format(FORMATTER));
-        //Log.v("lastSync", lastSync.now().format(FORMATTER));
-        //ddd, dd MMM yyyy HH':'mm':'ss 'GMT'
-        //Log.v("lastSync", LocalDateTime.parse(lastSync.toString()));
 
+    }
+
+    public List<String> getErrorList() {
+        return errorList;
+    }
+
+    public Boolean getAccessible() {
+        return isAccessible;
+    }
+
+    public LocalDateTime getLastSync() {
+        return lastSync;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public Double getPingRate() {
+        return pingRate;
+    }
+
+    public Double getPingTime() {
+        return pingTime;
+    }
+
+    public Double getXpsScore() {
+        return xpsScore;
     }
 
 }
