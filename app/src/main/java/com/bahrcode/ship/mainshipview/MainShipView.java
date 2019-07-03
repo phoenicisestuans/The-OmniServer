@@ -21,6 +21,29 @@ public class MainShipView extends AppCompatActivity {
         ShipModel.getInstance().fetchShipInfo();
 
         ShipModel.getInstance().connectRecyclerView(recyclerView);
+
+        // Sort by date of last sync. The more time since the last sync, th ehigher in the list.
+        //ShipModel.getInstance().setComparator((ShipInfo a, ShipInfo b) ->
+        //        a.getLastSync().compareTo(b.getLastSync()));
+
+        // Sort by number of errors. The more errors, the higher in the list it goes.
+        // FIXME hangs on the line where subtraction happens, I think. Not too sure about that.
+        /*ShipModel.getInstance().setComparator((ShipInfo a, ShipInfo b) -> {
+            Log.d("ShipSort", "Compare: " + a.getName() + " to " + b.getName());
+
+            int diff = a.getErrorList().size() - b.getErrorList().size();
+
+            if (diff == 0) {
+                Log.d("ShipSort", "Finish: " + a.getName() + " to " + b.getName());
+
+                // Default to alphabetical if needed.
+                return a.compareTo(b);
+            } else {
+
+                Log.d("ShipSort", "Finish: " + a.getName() + " to " + b.getName());
+                return diff;
+            }
+        });*/
     }
 
     @Override
@@ -30,7 +53,6 @@ public class MainShipView extends AppCompatActivity {
         Log.d(TAG, "mainShipView onCreate: started.");
 
         recyclerView = findViewById(R.id.recycler_view);
-
     }
 
 

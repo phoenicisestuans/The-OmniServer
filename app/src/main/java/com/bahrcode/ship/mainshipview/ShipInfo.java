@@ -10,12 +10,13 @@ import org.threeten.bp.LocalDateTime;
 import org.threeten.bp.ZoneId;
 import org.threeten.bp.ZonedDateTime;
 import org.threeten.bp.format.DateTimeFormatter;
+import org.threeten.bp.temporal.ChronoUnit;
 
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 
-public class ShipInfo {
+public class ShipInfo implements Comparable<ShipInfo> {
 
     @SerializedName("ErrorList")
     private List<String> errorList;
@@ -91,4 +92,14 @@ public class ShipInfo {
         return xpsScore;
     }
 
+    /**
+     * Implements a default sort for when no sort is specified or a tie breaker is needed.
+     * Sorts ships alphabetically by name.
+     * @param o - The ship to compare to.
+     * @return an integer used to sort the ship.
+     */
+    @Override
+    public int compareTo(ShipInfo o) {
+        return getName().compareTo(o.getName());
+    }
 }
