@@ -9,3 +9,4 @@
 *.lnk
 *.jar
 *.iml
+*local.properties
