@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="15dp"
+    android:background="#294062"
+    android:id="@+id/parent_layout">
+
+    <ImageView
+        android:layout_width="600dp"
+        android:layout_height="120dp"
+        android:background="@drawable/less_rounded_blue_fill"
+        android:layout_marginTop="40dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Carnival Name"
+        android:id="@+id/ship_name"
+        android:textColor="#FFF"
+        android:layout_marginTop="0dp"
+        android:layout_marginStart="20dp"
+        android:textSize="25sp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="XPS Score :"
+        android:id="@+id/xps_score_text"
+        android:textColor="#FFF"
+        android:layout_marginTop="50dp"
+        android:layout_marginStart="12dp"
+        android:textSize="17sp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="XXXX"
+        android:id="@+id/xps_score"
+        android:textColor="#FFF"
+        android:layout_marginTop="52dp"
+        android:layout_toEndOf="@+id/xps_score_text"
+        android:layout_marginStart="10dp"
+        android:textSize="15sp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Accessible :"
+        android:id="@+id/accessible_text"
+        android:textColor="#FFF"
+        android:layout_marginTop="75dp"
+        android:layout_marginStart="12dp"
+        android:textSize="17sp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="XXXX"
+        android:id="@+id/accessible"
+        android:textColor="#FFF"
+        android:layout_marginTop="77dp"
+        android:layout_toEndOf="@+id/accessible_text"
+        android:layout_marginStart="10dp"
+        android:textSize="15sp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Ping Time :"
+        android:id="@+id/ping_time_text"
+        android:textColor="#FFF"
+        android:layout_marginTop="100dp"
+        android:layout_marginStart="12dp"
+        android:textSize="17sp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="XXXX"
+        android:id="@+id/ping_time"
+        android:textColor="#FFF"
+        android:layout_marginTop="103dp"
+        android:layout_toEndOf="@+id/ping_time_text"
+        android:layout_marginStart="10dp"
+        android:textSize="15sp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Ping Rate :"
+        android:id="@+id/ping_rate_text"
+        android:textColor="#FFF"
+        android:layout_marginTop="125dp"
+        android:layout_marginStart="12dp"
+        android:textSize="17sp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="XXXX"
+        android:id="@+id/ping_rate"
+        android:textColor="#FFF"
+        android:layout_marginTop="128dp"
+        android:layout_toEndOf="@+id/ping_rate_text"
+        android:layout_marginStart="10dp"
+        android:textSize="15sp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Last Sync :"
+        android:id="@+id/last_sync_text"
+        android:textColor="#FFF"
+        android:layout_marginTop="50dp"
+        android:layout_marginStart="180dp"
+        android:textSize="17sp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="XX hours ago"
+        android:id="@+id/last_sync"
+        android:textColor="#FFF"
+        android:layout_marginTop="52dp"
+        android:layout_toEndOf="@+id/last_sync_text"
+        android:layout_marginStart="10dp"
+        android:textSize="15sp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Error List :"
+        android:id="@+id/error_list_text"
+        android:textColor="#FFF"
+        android:layout_marginTop="85dp"
+        android:layout_marginStart="180dp"
+        android:textSize="17sp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
+        android:id="@+id/error_list"
+        android:textColor="#FFF"
+        android:layout_marginTop="110dp"
+        android:layout_marginStart="180dp"
+        android:textSize="12sp"/>
+
+</RelativeLayout>

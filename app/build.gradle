@@ -16,6 +16,10 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+    compileOptions {
+        sourceCompatibility = '1.8'
+        targetCompatibility = '1.8'
+    }
 }
 
 dependencies {
@@ -25,5 +29,30 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+<<<<<<< HEAD
     testImplementation 'junit:junit:4.12'
+=======
+
+    //Gson
+    implementation 'com.google.code.gson:gson:2.8.5'
+
+    //RX Library
+    implementation 'io.reactivex.rxjava2:rxjava:2.2.3'
+    implementation 'io.reactivex.rxjava2:rxandroid:2.1.0'
+    //RX Debugging
+    implementation("com.uber.rxdogtag:rxdogtag:0.2.0")
+    //You have to put RxDogTag.install(); early in the process to showup.
+    //Retrofit
+    api 'com.squareup.retrofit2:retrofit:2.4.0'
+    api 'com.squareup.retrofit2:adapter-rxjava2:2.4.0'
+    api 'com.squareup.retrofit2:converter-gson:2.4.0'
+    api 'com.squareup.okhttp3:logging-interceptor:3.11.0'
+
+    //Date Handling Utils
+    implementation 'com.jakewharton.threetenabp:threetenabp:1.2.0'
+
+    //RecyclerView for shipList
+    implementation 'com.android.support:recyclerview-v7:28.0.0'
+
+>>>>>>> james
 }
