@@ -32,6 +32,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     public void setComparator(Comparator<ShipInfo> comparator) {
         this.comparator = comparator;
         data.sort(comparator);
+        notifyDataSetChanged();
     }
 
     /**'
@@ -70,7 +71,13 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         viewHolder.pingTime.setText(ship.getPingTime().toString());
         viewHolder.pingRate.setText(ship.getPingRate().toString());
         viewHolder.lastSync.setText(ship.getLastSync().toString());
-        //viewHolder.errorList.setText(ship.getErrorList().toString());
+
+        List<String> errorList = ship.getErrorList();
+        if (errorList == null) {
+            viewHolder.errorList.setText("No errors.");
+        } else {
+            viewHolder.errorList.setText(errorList.toString());
+        }
 
 
         int yellow = ContextCompat.getColor(viewHolder.itemView.getContext(), R.color.yellow);

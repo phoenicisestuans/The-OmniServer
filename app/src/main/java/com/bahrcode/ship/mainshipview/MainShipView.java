@@ -7,6 +7,7 @@ import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class MainShipView extends AppCompatActivity {
 
@@ -27,11 +28,16 @@ public class MainShipView extends AppCompatActivity {
         //        a.getLastSync().compareTo(b.getLastSync()));
 
         // Sort by number of errors. The more errors, the higher in the list it goes.
-        // FIXME hangs on the line where subtraction happens, I think. Not too sure about that.
         /*ShipModel.getInstance().setComparator((ShipInfo a, ShipInfo b) -> {
             Log.d("ShipSort", "Compare: " + a.getName() + " to " + b.getName());
 
-            int diff = a.getErrorList().size() - b.getErrorList().size();
+            List<String> errorListA = a.getErrorList();
+            List<String> errorListB = b.getErrorList();
+
+            int aErrorCount = (errorListA != null) ? errorListA.size():0;
+            int bErrorCount = (errorListB != null) ? errorListB.size():0;
+
+            int diff = bErrorCount - aErrorCount;
 
             if (diff == 0) {
                 Log.d("ShipSort", "Finish: " + a.getName() + " to " + b.getName());
