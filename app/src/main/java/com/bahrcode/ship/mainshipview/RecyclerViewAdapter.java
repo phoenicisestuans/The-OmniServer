@@ -14,6 +14,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 
 public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.ViewHolder>{
@@ -22,8 +23,25 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
     private List<ShipInfo> data = new ArrayList<>();
 
+    private Comparator<ShipInfo> comparator = null;
 
+    /**
+     * Sets the ship's comparator. Will run the comparator immediately.
+     * @param comparator - A comparator to sort the ships with.
+     */
+    public void setComparator(Comparator<ShipInfo> comparator) {
+        this.comparator = comparator;
+        data.sort(comparator);
+        notifyDataSetChanged();
+    }
+
+    /**'
+     * Changes the view's list of ships. If a comparator is set, it will be used on this list
+     * immediately.
+     * @param data - A list of ships to be displayed.
+     */
     public void setData(List<ShipInfo> data) {
+        data.sort(comparator);
         this.data = data;
         notifyDataSetChanged();
     }
@@ -53,7 +71,13 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         viewHolder.pingTime.setText(ship.getPingTime().toString());
         viewHolder.pingRate.setText(ship.getPingRate().toString());
         viewHolder.lastSync.setText(ship.getLastSync().toString());
-        //viewHolder.errorList.setText(ship.getErrorList().toString());
+
+        List<String> errorList = ship.getErrorList();
+        if (errorList == null) {
+            viewHolder.errorList.setText("No errors.");
+        } else {
+            viewHolder.errorList.setText(errorList.toString());
+        }
 
 
         int yellow = ContextCompat.getColor(viewHolder.itemView.getContext(), R.color.yellow);

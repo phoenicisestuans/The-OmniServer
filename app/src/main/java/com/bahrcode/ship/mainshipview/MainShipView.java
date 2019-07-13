@@ -7,6 +7,7 @@ import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class MainShipView extends AppCompatActivity {
 
@@ -21,6 +22,34 @@ public class MainShipView extends AppCompatActivity {
         ShipModel.getInstance().fetchShipInfo();
 
         ShipModel.getInstance().connectRecyclerView(recyclerView);
+
+        // Sort by date of last sync. The more time since the last sync, th ehigher in the list.
+        //ShipModel.getInstance().setComparator((ShipInfo a, ShipInfo b) ->
+        //        a.getLastSync().compareTo(b.getLastSync()));
+
+        // Sort by number of errors. The more errors, the higher in the list it goes.
+        /*ShipModel.getInstance().setComparator((ShipInfo a, ShipInfo b) -> {
+            Log.d("ShipSort", "Compare: " + a.getName() + " to " + b.getName());
+
+            List<String> errorListA = a.getErrorList();
+            List<String> errorListB = b.getErrorList();
+
+            int aErrorCount = (errorListA != null) ? errorListA.size():0;
+            int bErrorCount = (errorListB != null) ? errorListB.size():0;
+
+            int diff = bErrorCount - aErrorCount;
+
+            if (diff == 0) {
+                Log.d("ShipSort", "Finish: " + a.getName() + " to " + b.getName());
+
+                // Default to alphabetical if needed.
+                return a.compareTo(b);
+            } else {
+
+                Log.d("ShipSort", "Finish: " + a.getName() + " to " + b.getName());
+                return diff;
+            }
+        });*/
     }
 
     @Override
@@ -30,7 +59,6 @@ public class MainShipView extends AppCompatActivity {
         Log.d(TAG, "mainShipView onCreate: started.");
 
         recyclerView = findViewById(R.id.recycler_view);
-
     }
 
 
