@@ -71,7 +71,6 @@ public class MainActivity extends AppCompatActivity {
         );
     }
 
-<<<<<<< HEAD
     public String getInput_username() {
         return input_username;
     }
@@ -79,6 +78,5 @@ public class MainActivity extends AppCompatActivity {
     public void setInput_username(String input_username) {
         this.input_username = input_username;
     }
-=======
->>>>>>> james
+
 }
